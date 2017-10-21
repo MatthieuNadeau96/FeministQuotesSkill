@@ -1,0 +1,22 @@
+{
+  "name": "--yes",
+  "version": "1.0.0",
+  "description": "\"This is an Alexa Skill that produces Quotes by powerful women.\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatthieuNadeau96/FeministQuotesSkill.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MatthieuNadeau96/FeministQuotesSkill/issues"
+  },
+  "homepage": "https://github.com/MatthieuNadeau96/FeministQuotesSkill#readme",
+  "dependencies": {
+    "universal-analytics": "^0.4.13"
+  }
+}
