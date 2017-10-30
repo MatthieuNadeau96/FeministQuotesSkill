@@ -11,9 +11,13 @@ const docClient = new AWS.DynamoDB.DocumentClient();
 const totalQuotes = process.env.TOTAL_QUOTE_COUNT;
 
 const SKILL_NAME = "Words by Powerful Women";
-const GET_QUOTE = "Hello, here is your quote: <break time='1s'/>";
-const HELP_MESSAGE = "Help Message";
-const HELP_REPROMPT = "Help Reprompt";
+const GET_QUOTE_INTRO = [
+  "Hello, here is your quote: <break time='1s'/>",
+  "Greetings, here is your quote: <break time='1s'/>",
+  "here is your quote: <break time='1s'/>"
+];
+const HELP_MESSAGE = "just start the skill to get a quote!";
+const HELP_REPROMPT = "Just say, alexa, start feminist quotes.";
 const STOP_MESSAGE = "Goodbye!";
 const SAID_BY_INTRO = [
   "This was said by, ",
@@ -83,7 +87,7 @@ const handlers = {
 
     // this.response.cardRenderer(SKILL_NAME, randomQuote);
     console.log("speechOutput: " + speechOutput);
-    this.response.speak(GET_QUOTE + speechOutput + randomIntro(SAID_BY_INTRO) + author);
+    this.response.speak(randomIntro(GET_QUOTE_INTRO) + speechOutput + randomIntro(SAID_BY_INTRO) + author + "<break time='1s'/>" + "If you would like to hear more words by powerful women, simply start the skill again. ");
     this.emit(':responseReady');
   },
   'AMAZON.HelpIntent': function() {
@@ -94,11 +98,13 @@ const handlers = {
     this.emit(':responseReady');
   },
   'AMAZON.CancelIntent': function() {
-    this.response.speak(STOP_MESSAGE);
+    const speechOutput = STOP_MESSAGE;
+    this.response.speak(speechOutput)
     this.emit(':responseReady');
   },
   'AMAZON.StopIntent': function() {
-    this.response.speak(STOP_MESSAGE);
+    const speechOutput = STOP_MESSAGE;
+    this.response.speak(speechOutput)
     this.emit(':responseReady');
   }
 };
